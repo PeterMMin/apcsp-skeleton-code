@@ -2,7 +2,7 @@ from queue import Queue
 import wikipediaapi
 import time
 
-user_agent = "MsOrret'sWikipediaGame/1.0 (orret.deborah@pusd.us)"
+user_agent = "PeterMin'sWikipediaGame/1.0 (mi3549pe1220@pusd.us)"
 
 wiki_wiki = wikipediaapi.Wikipedia(user_agent, "en")
 
@@ -19,6 +19,42 @@ def fetch_links(page):
 def wikipedia_game_solver(start_page, target_page):
     print('Working on it...')
     start_time = time.time()
+
+    visited=[]
+    queue= Queue()
+    path=[]
+
+    queue.put(start_page.title)
+    visited.append(start_page.title)
+
+    while not queue.empty():
+
+        current_title= queue.get()
+
+        if curent_title == target_page.title:
+            break
+
+
+        visited.append(current_title)
+        current_page = wiki_wiki.page(current_title)
+        next_level = fetch_links(current_page)
+
+        for node in next_level:
+            if node not in visited:
+                queue.put(node)
+                parent[node] = current_title
+
+    child = target_page.title
+    while child != start_page.title:
+        path.append(child)
+        child = parent[child]
+    path.append(start_page.title)
+    path.reverse()
+        #get from queue (queue.get())
+        #add to visited 
+        #fetch the links
+
+        #if my thing is in there, break
   
     # FINISH THE CODE HERE
 
