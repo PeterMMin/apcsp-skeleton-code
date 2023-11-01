@@ -23,6 +23,7 @@ def wikipedia_game_solver(start_page, target_page):
     visited=[]
     queue= Queue()
     path=[]
+    parent={}
 
     queue.put(start_page.title)
     visited.append(start_page.title)
@@ -31,7 +32,7 @@ def wikipedia_game_solver(start_page, target_page):
 
         current_title= queue.get()
 
-        if curent_title == target_page.title:
+        if current_title == target_page.title:
             break
 
 
